@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.push File.join(File.dirname(__FILE__), "/../lib" )
+
+require 'images_gallery/cli'
+
+ImagesGallery::CLI.start(ARGV)
