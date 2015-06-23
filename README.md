@@ -3,6 +3,17 @@ Images Gallery Generator Kata
 
 Generate a set of static HTML files from an XML representation of EXIF data so users can browse a collection of images.
 
+Usage
+-----
+
+```bash
+# Generate a gallery inside spec/tmp from the example source file
+./bin/images_gallery generate spec/fixtures/works.xml spec/tmp
+
+# Read usage intructions:
+./bin/images_gallery help
+```
+
 License
 -------
 
