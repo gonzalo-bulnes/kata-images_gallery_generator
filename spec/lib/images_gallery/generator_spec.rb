@@ -5,7 +5,7 @@ describe 'Generator' do
 
   let(:generator) { Generator.new('spec/fixtures/works.xml', 'spec/tmp') }
 
-  it { expect(generator).to respond_to :run }
+  it_behaves_like 'a generator'
 
 end
 end
