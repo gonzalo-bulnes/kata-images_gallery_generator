@@ -33,6 +33,18 @@ task :rubycritic do
   abort unless exit_status == 0
 end
 
+begin
+  require 'inch/rake'
 
+  Inch::Rake::Suggest.new(:inch) do |suggest|
+    suggest.args << "--private"
+    suggest.args << "--pedantic"
+  end
+rescue LoadError
+  desc 'Inch rake task not available'
+  task :inch do
+  abort 'Inch rake task is not available. Be sure to install inch as a gem or plugin'
+  end
+end
 
-task default: [:spec, :rubycritic]
+task default: [:spec, :inch, :rubycritic]
