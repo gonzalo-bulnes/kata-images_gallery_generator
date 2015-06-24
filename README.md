@@ -14,6 +14,16 @@ Usage
 ./bin/images_gallery help
 ```
 
+Development
+-----------
+
+### Test suite
+
+```bash
+# Run the test suite
+rake
+```
+
 License
 -------
 
