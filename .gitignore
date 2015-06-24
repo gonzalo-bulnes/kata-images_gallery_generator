@@ -1,3 +1,6 @@
 # images gallery generated from documentation examples
 spec/tmp
 
+# Ruby Critic reports
+tmp/rubycritic
+
