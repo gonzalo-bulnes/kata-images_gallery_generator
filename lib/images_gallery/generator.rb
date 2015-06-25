@@ -1,3 +1,5 @@
+require 'images_gallery/source'
+
 module ImagesGallery
   class Generator
 
@@ -5,8 +7,11 @@ module ImagesGallery
     private :source, :target
 
     def run(source, target, error=STDERR)
-      @source = source if File.file? source
+      @source = Source.new(source) if File.file? source
       @target = target if File.directory? target
+
+      @source.parse
+      # @source.images is now available
     end
 
   end

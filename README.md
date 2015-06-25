@@ -1,7 +1,7 @@
 Images Gallery Generator Kata
 =============================
 
-Generate a set of static HTML files from an XML representation of EXIF data so users can browse a collection of images.
+Generate a set of static HTML files from an XML representation of EXIF data so users can browse large collections of images.
 
 Usage
 -----
@@ -23,6 +23,14 @@ Development
 # Run the test suite
 rake
 ```
+
+### Parser
+
+The `ImageGallery::Source` relies on the **LibXML** SAX parser to extract the images described in the source XML file (e.g. [`works.xml`][example-source]). That parser is [known to be fast][libxml-benchmarks] and [memory-thrifty][sax-versus-dom].
+
+  [example-source]: spec/fixtures/works.xml
+  [libxml-benchmarks]: https://github.com/xml4r/libxml-ruby#performance
+  [sax-versus-dom]: http://www.saxproject.org/event.html
 
 License
 -------
