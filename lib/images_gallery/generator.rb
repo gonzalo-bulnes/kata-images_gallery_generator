@@ -28,13 +28,15 @@ module ImagesGallery
         images_by_make = Collection.new
         images.select{ |image| image.make == make }.each do |image|
           images_by_make << image
-          @files["#{make.downcase.gsub(/\W/, '_').gsub(/_+/, '_').gsub(/_\Z/, '')}"] = Views::Make.new(images_by_make).render
+          view = Views::Make.new(images_by_make)
+          @files[view.file_identifier(image.make)] = view.render
 
           images_by_make.models.each do |model|
             images_by_model = Collection.new
             images_by_make.select{ |image| image.model == model }.each do |image|
               images_by_model << image
-              @files["#{make.downcase.gsub(/\W/, '_').gsub(/_+/, '_').gsub(/_\Z/, '')}/#{model.downcase.gsub(/\W/, '_').gsub(/_+/, '_').gsub(/_\Z/, '')}"] = Views::Model.new(images_by_model).render
+              view = Views::Model.new(images_by_model)
+              @files[view.file_identifier(image.make, image.model)] = view.render
             end
           end
         end
