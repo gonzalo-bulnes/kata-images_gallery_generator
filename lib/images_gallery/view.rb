@@ -3,6 +3,21 @@ require 'erb'
 module ImagesGallery
   class View
 
+    # Provides context and helpers to the corresponding template
+    #
+    # Any variable defined in the context of this class will be accessible
+    # from the corresponding ERb template.
+    # See http://ruby-doc.org/stdlib-2.2.2/libdoc/erb/rdoc/ERB.html#method-i-result
+    #
+    # Usage:
+    #
+    # Do not instanciate this class, define subclasses instead an define their
+    # template methods as demonstrated in Views::Index.
+    #
+    # Conventionally, templates could be stored in images_gallery/templates, but
+    # there is no obligation to follow the convention.
+    #
+    # This class not meant to be instanciated, subclasses do return View instances (kind of).
     def initialize
       @template = File.new(template)
     end
