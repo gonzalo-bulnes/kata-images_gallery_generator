@@ -1,5 +1,13 @@
 <div class="grid">
   <% images.each do |image| %>
-    <img alt="<%= image.description %>" class="grid-item" src="<%= image.src %>"/>
+    <div class="grid-item">
+      <img alt="<%= image.description %>" src="<%= image.src %>"/>
+      <% unless depth == 1 %>
+        <a class="grid-item-details" href="<%= link_to(depth, image.make, image.model) %>" title="Browse all the <%= image.model %> images.">
+          <div><%= image.make %></div>
+          <div><%= image.model %></div>
+        </a>
+      <% end %>
+    </div>
   <% end %>
 </div>
