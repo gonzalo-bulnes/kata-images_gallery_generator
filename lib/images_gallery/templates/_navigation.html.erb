@@ -1,0 +1,5 @@
+<nav>
+  <% links.each do |link| %>
+    <a class="nav-link" href="<%= link[:href] %>"><%= link[:name] %></a>
+  <% end %>
+</nav>
