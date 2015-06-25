@@ -14,36 +14,10 @@ module ImagesGallery
       @target = target if File.directory? target
 
       @source.parse
-      # @source.images is now available
-
-      images = @source.images
-
-      # render templates
-      @files = {}
-
-      index = Views::Index.new(images)
-      @files['index'] = index.render
-
-      images.makes.each do |make|
-        images_by_make = Collection.new
-        images.select{ |image| image.make == make }.each do |image|
-          images_by_make << image
-          view = Views::Make.new(images_by_make)
-          @files[view.file_identifier(image.make)] = view.render
-
-          images_by_make.models.each do |model|
-            images_by_model = Collection.new
-            images_by_make.select{ |image| image.model == model }.each do |image|
-              images_by_model << image
-              view = Views::Model.new(images_by_model)
-              @files[view.file_identifier(image.make, image.model)] = view.render
-            end
-          end
-        end
-      end
+      files = render_views(@source.images)
 
       # create files
-      @files.each do |name, content|
+      files.each do |name, content|
         file_path = target + name
         file_url = file_path + '.html'
         FileUtils.mkdir_p(file_path) unless File.exists?(file_path)
@@ -51,7 +25,34 @@ module ImagesGallery
           file.write content
         end
       end
+    end
 
+    private
+
+    def render_views(images)
+      files = {}
+
+      index = Views::Index.new(images)
+      files['index'] = index.render
+
+      images.makes.each do |make|
+        images_by_make = Collection.new
+        images.select{ |image| image.make == make }.each do |image|
+          images_by_make << image
+          view = Views::Make.new(images_by_make)
+          files[view.file_identifier(image.make)] = view.render
+
+          images_by_make.models.each do |model|
+            images_by_model = Collection.new
+            images_by_make.select{ |image| image.model == model }.each do |image|
+              images_by_model << image
+              view = Views::Model.new(images_by_model)
+              files[view.file_identifier(image.make, image.model)] = view.render
+            end
+          end
+        end
+        files
+      end
     end
   end
 end
