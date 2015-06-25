@@ -4,3 +4,6 @@ spec/tmp
 # Ruby Critic reports
 tmp/rubycritic
 
+# large fixtures
+spec/fixtures/*_large.xml
+
