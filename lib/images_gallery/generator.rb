@@ -20,41 +20,40 @@ module ImagesGallery
 
     private
 
-    def render_views(images)
-      files = {}
+      def render_views(images)
+        files = {}
 
-      index = Views::Index.new(images)
-      files['index'] = index.render
+        files['index'] = Views::Index.new(images).render
 
-      images.makes.each do |make|
-        images_by_make = Collection.new
-        images.select{ |image| image.make == make }.each do |image|
-          images_by_make << image
-          view = Views::Make.new(images_by_make)
-          files[view.file_identifier(image.make)] = view.render
+        images.makes.each do |make|
+          images_by_make = Collection.new
+          images.select{ |image| image.make == make }.each do |image|
+            images_by_make << image
+            view = Views::Make.new(images_by_make)
+            files[view.file_identifier(image.make)] = view.render
 
-          images_by_make.models.each do |model|
-            images_by_model = Collection.new
-            images_by_make.select{ |image| image.model == model }.each do |image|
-              images_by_model << image
-              view = Views::Model.new(images_by_model)
-              files[view.file_identifier(image.make, image.model)] = view.render
+            images_by_make.models.each do |model|
+              images_by_model = Collection.new
+              images_by_make.select{ |image| image.model == model }.each do |image|
+                images_by_model << image
+                view = Views::Model.new(images_by_model)
+                files[view.file_identifier(image.make, image.model)] = view.render
+              end
             end
           end
         end
         files
       end
-    end
 
-    def generate(target, files)
-      files.each do |name, content|
-        file_path = target + name
-        file_url = file_path + '.html'
-        FileUtils.mkdir_p(file_path) unless File.exists?(file_path)
-        File.open(file_url, 'w') do |file|
-          file.write content
+      def generate(target, files)
+        files.each do |name, content|
+          file_path = target + name
+          file_url = file_path + '.html'
+          FileUtils.mkdir_p(file_path) unless File.exists?(file_path)
+          File.open(file_url, 'w') do |file|
+            file.write content
+          end
         end
       end
-    end
   end
 end
