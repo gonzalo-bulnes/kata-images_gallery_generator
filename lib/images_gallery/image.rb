@@ -4,11 +4,11 @@ module ImagesGallery
     attr_accessor :id, :src, :make, :model
 
     def make
-      @make || 'Other'
+      @make || 'Unknown Make'
     end
 
     def model
-      @model || 'Other'
+      @model || 'Unknown Model'
     end
 
     def description
