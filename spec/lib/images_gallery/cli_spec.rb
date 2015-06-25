@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'images_gallery/cli'
 
 module ImagesGallery
-describe CLI do
+describe 'CLI' do
 
   let(:cli_class) { CLI }
   let(:command_line_interface) { CLI.new }

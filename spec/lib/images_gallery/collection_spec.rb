@@ -1,12 +1,14 @@
 require 'spec_helper'
 
 module ImagesGallery
-describe Collection do
+describe 'Collection' do
 
-  it { is_expected.to be_kind_of Array }
+  let(:collection) { Collection.new }
 
-  it { is_expected.to respond_to :makes }
-  it { is_expected.to respond_to :models }
+  it_behaves_like 'a collection'
+
+  it { expect(collection).to respond_to :makes }
+  it { expect(collection).to respond_to :models }
 
 end
 end
