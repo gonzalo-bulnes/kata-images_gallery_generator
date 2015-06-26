@@ -5,6 +5,17 @@ Generate a set of static HTML files from an XML representation of EXIF data so u
 
 <img alt="" src="doc/illustration.png"/>
 
+Installation
+------------
+
+Add the gem to your `Gemfile`:
+
+```ruby
+# Gemfile
+
+gem 'images_gallery', '~> 1.0' # see semver.org
+```
+
 Usage
 -----
 
