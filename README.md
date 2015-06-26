@@ -25,6 +25,10 @@ Development
 ```bash
 # Run the test suite
 rake
+
+# Run the acceptance test suite only (can be seen as a demo)
+rake features
+# Visit spec/tmp/index.html to browse the sample images
 ```
 
 ### Parser
