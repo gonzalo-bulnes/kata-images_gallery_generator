@@ -3,6 +3,8 @@ Images Gallery Generator Kata
 
 Generate a set of static HTML files from an XML representation of EXIF data so users can browse large collections of images.
 
+<img alt="" src="doc/illustration.png"/>
+
 Usage
 -----
 
