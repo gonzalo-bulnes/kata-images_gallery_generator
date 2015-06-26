@@ -52,10 +52,10 @@ module ImagesGallery
 
       def generate(target, files)
         files.each do |name, content|
-          file_path = target + '/' + name
-          file_url = file_path + '.html'
-          FileUtils.mkdir_p(file_path) unless File.exists?(file_path) || (name == 'index')
-          File.open(file_url, 'w') do |file|
+          dir_path = "#{target}/#{name}".gsub('//', '/')
+          file_path = dir_path + '.html'
+          FileUtils.mkdir_p(dir_path) unless File.exists?(dir_path) || (name == 'index')
+          File.open(file_path, 'w') do |file|
             file.write content
           end
         end
