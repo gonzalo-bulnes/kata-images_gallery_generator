@@ -1,22 +1,37 @@
 Images Gallery Generator Kata
 =============================
 
+[![Build Status](https://travis-ci.org/gonzalo-bulnes/kata-images_gallery_generator.svg?branch=master)](https://travis-ci.org/gonzalo-bulnes/kata-images_gallery_generator)
+[![Code Climate](https://codeclimate.com/github/gonzalo-bulnes/kata-images_gallery_generator.svg)](https://codeclimate.com/github/gonzalo-bulnes/kata-images_gallery_generator)
+[![Inline docs](http://inch-ci.org/github/gonzalo-bulnes/kata-images_gallery_generator.svg?branch=master)](http://inch-ci.org/github/gonzalo-bulnes/kata-images_gallery_generator)
+
 Generate a set of static HTML files from an XML representation of EXIF data so users can browse large collections of images.
 
 <img alt="" src="doc/illustration.png"/>
+
+Installation
+------------
+
+Add the gem to your `Gemfile`:
+
+```ruby
+# Gemfile
+
+gem 'images_gallery', '~> 1.0' # see semver.org
+```
 
 Usage
 -----
 
 ```bash
 # Generate a gallery inside spec/tmp from the example source file
-./bin/images_gallery generate spec/fixtures/works.xml spec/tmp
+images_gallery generate spec/fixtures/works.xml spec/tmp
 
 # Read usage intructions:
-./bin/images_gallery help
+images_gallery help
 
 # Open the images gallery automatically after it was generated
-firefox $(./bin/images_gallery generate spec/fixtures/works.xml spec/tmp/)
+firefox $(images_gallery generate spec/fixtures/works.xml spec/tmp/)
 ```
 
 Development

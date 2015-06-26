@@ -22,7 +22,7 @@ module ImagesGallery
       end
 
       def template
-        'lib/images_gallery/templates/layout.html.erb'
+        File.expand_path('../../templates/layout.html.erb', __FILE__)
       end
     end
   end
