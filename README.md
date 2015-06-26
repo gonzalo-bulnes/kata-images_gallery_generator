@@ -25,13 +25,13 @@ Usage
 
 ```bash
 # Generate a gallery inside spec/tmp from the example source file
-./bin/images_gallery generate spec/fixtures/works.xml spec/tmp
+images_gallery generate spec/fixtures/works.xml spec/tmp
 
 # Read usage intructions:
-./bin/images_gallery help
+images_gallery help
 
 # Open the images gallery automatically after it was generated
-firefox $(./bin/images_gallery generate spec/fixtures/works.xml spec/tmp/)
+firefox $(images_gallery generate spec/fixtures/works.xml spec/tmp/)
 ```
 
 Development

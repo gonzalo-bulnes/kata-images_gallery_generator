@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = "https://github.com/gonzalo-bulnes/kata-images_gallery_generator"
   gem.license       = "GPL-3.0"
 
+  gem.executables = ['images_gallery']
   gem.files = Dir["{bin, doc,lib}/**/*", "Gemfile", "LICENSE", "Rakefile", "README.md", "config.ru"]
   gem.test_files = Dir["spec/**/*"]
 
