@@ -1,6 +1,10 @@
 Images Gallery Generator Kata
 =============================
 
+[![Build Status](https://travis-ci.org/gonzalo-bulnes/kata-images_gallery_generator.svg?branch=master)](https://travis-ci.org/gonzalo-bulnes/kata-images_gallery_generator)
+[![Code Climate](https://codeclimate.com/github/gonzalo-bulnes/kata-images_gallery_generator.svg)](https://codeclimate.com/github/gonzalo-bulnes/kata-images_gallery_generator)
+[![Inline docs](http://inch-ci.org/github/gonzalo-bulnes/kata-images_gallery_generator.svg?branch=master)](http://inch-ci.org/github/gonzalo-bulnes/kata-images_gallery_generator)
+
 Generate a set of static HTML files from an XML representation of EXIF data so users can browse large collections of images.
 
 <img alt="" src="doc/illustration.png"/>
