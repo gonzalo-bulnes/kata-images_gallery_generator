@@ -1,3 +1,4 @@
+require 'images_gallery/errors'
 require 'images_gallery/source'
 require 'images_gallery/views/index'
 require 'images_gallery/views/make'
@@ -6,12 +7,16 @@ require 'images_gallery/views/model'
 module ImagesGallery
   class Generator
 
-    attr_reader :source, :target
-    private :source, :target
+    attr_reader :target
+    private :target
 
-    def run(source, target, error=STDERR)
-      @source = Source.new(source) if File.file? source
-      @target = target if File.directory? target
+    def run(source, target)
+
+      raise SourceFileNotFoundError unless File.file? source
+      raise TargetDirectoryNotFoundError unless File.directory? target
+
+      @source = Source.new(source)
+      @target = target
 
       @source.parse
       files = render_views(@source.images)
