@@ -1,6 +1,6 @@
 require 'thor'
 
-require 'images_gallery/generator'
+require 'images_gallery'
 
 module ImagesGallery
   class CLI < Thor
