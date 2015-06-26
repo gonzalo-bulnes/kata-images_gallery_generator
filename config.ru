@@ -1,10 +1,8 @@
 require 'rack'
 
-ROOT_DIRECCTORY = 'spec/tmp'
-use Rack::Static, urls: [""], root: ROOT_DIRECCTORY, index: 'index.html'
+$:.push File.expand_path("../lib", __FILE__)
 
-simple_server = proc do |env|
-  Rack::Directory.new(ROOT_DIRECCTORY, index: 'index.html').call(env)
-end
+require 'images_gallery/test_application'
 
-run simple_server
+use Rack::Static, urls: [""], root: ImagesGallery::TestApplication::DEFAULT_TARGET, index: 'index.html'
+run ImagesGallery::TestApplication
