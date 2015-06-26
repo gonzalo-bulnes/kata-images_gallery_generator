@@ -34,7 +34,11 @@ module ImagesGallery
 
     def parse
       @images = Collection.new
-      @file.parse
+      begin
+        @file.parse
+      rescue LibXML::XML::Error
+        raise SourceFileInvalidError
+      end
     end
 
     # Callbacks can't be private, yet they are not part of the public API.

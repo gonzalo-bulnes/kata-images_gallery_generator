@@ -1,3 +1,4 @@
+require 'images_gallery/errors'
 require 'images_gallery/source'
 require 'images_gallery/views/index'
 require 'images_gallery/views/make'
@@ -6,12 +7,16 @@ require 'images_gallery/views/model'
 module ImagesGallery
   class Generator
 
-    attr_reader :source, :target
-    private :source, :target
+    attr_reader :target
+    private :target
 
-    def run(source, target, error=STDERR)
-      @source = Source.new(source) if File.file? source
-      @target = target if File.directory? target
+    def run(source, target)
+
+      raise SourceFileNotFoundError unless File.file? source
+      raise TargetDirectoryNotFoundError unless File.directory? target
+
+      @source = Source.new(source)
+      @target = target
 
       @source.parse
       files = render_views(@source.images)
@@ -47,13 +52,15 @@ module ImagesGallery
 
       def generate(target, files)
         files.each do |name, content|
-          file_path = target + '/' + name
-          file_url = file_path + '.html'
-          FileUtils.mkdir_p(file_path) unless File.exists?(file_path) || (name == 'index')
-          File.open(file_url, 'w') do |file|
+          dir_path = "#{target}/#{name}".gsub('//', '/')
+          file_path = dir_path + '.html'
+          @index_path = file_path if name == 'index'
+          FileUtils.mkdir_p(dir_path) unless File.exists?(dir_path) || (name == 'index')
+          File.open(file_path, 'w') do |file|
             file.write content
           end
         end
+        @index_path
       end
   end
 end

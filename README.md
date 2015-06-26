@@ -12,6 +12,9 @@ Usage
 
 # Read usage intructions:
 ./bin/images_gallery help
+
+# Open the images gallery automatically after it was generated
+firefox $(./bin/images_gallery generate spec/fixtures/works.xml spec/tmp/)
 ```
 
 Development
