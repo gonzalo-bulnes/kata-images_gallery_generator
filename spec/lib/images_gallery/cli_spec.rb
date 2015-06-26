@@ -15,13 +15,21 @@ describe 'CLI' do
 
   describe '#generate' do
 
+    it 'outputs what the generator returns' do
+      stderr = double()
+      stdout = double()
+      allow(command_line_interface).to receive_message_chain(:generator, :run).and_return('/path/to/gallery/index.html')
+
+      expect(stdout).to receive_message_chain(:puts).with('/path/to/gallery/index.html')
+      command_line_interface.generate('spec/fixtures/works.xml', 'spec/tmp', stderr, stdout)
+    end
+
     describe 'provides quick feedback on common errors' do
 
       context 'on SourceFileNotFoundError' do
 
         it 'outputs an error message about the missing source file' do
           stderr = double()
-          allow(command_line_interface).to receive(:error).and_return(stderr)
           allow(command_line_interface).to receive_message_chain(:generator, :run) { raise ImagesGallery::SourceFileNotFoundError }
 
           expect(stderr).to receive_message_chain(:puts).with('Please make sure the specified source file exists.')
@@ -33,7 +41,6 @@ describe 'CLI' do
 
         it 'outputs an error message about the missing target directory' do
           stderr = double()
-          allow(command_line_interface).to receive(:error).and_return(stderr)
           allow(command_line_interface).to receive_message_chain(:generator, :run) { raise ImagesGallery::TargetDirectoryNotFoundError }
 
           expect(stderr).to receive_message_chain(:puts).with('Please make sure the specified target directory exists.')
@@ -45,7 +52,6 @@ describe 'CLI' do
 
         it 'outputs an error message about the XML source file not being well-formed' do
           stderr = double()
-          allow(command_line_interface).to receive(:error).and_return(stderr)
           allow(command_line_interface).to receive_message_chain(:generator, :run) { raise ImagesGallery::SourceFileInvalidError }
 
           expect(stderr).to receive_message_chain(:puts).with('The source file is invalid. Please check it is well-formed XML.')

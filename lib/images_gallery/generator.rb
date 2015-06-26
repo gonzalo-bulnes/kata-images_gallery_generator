@@ -54,11 +54,13 @@ module ImagesGallery
         files.each do |name, content|
           dir_path = "#{target}/#{name}".gsub('//', '/')
           file_path = dir_path + '.html'
+          @index_path = file_path if name == 'index'
           FileUtils.mkdir_p(dir_path) unless File.exists?(dir_path) || (name == 'index')
           File.open(file_path, 'w') do |file|
             file.write content
           end
         end
+        @index_path
       end
   end
 end

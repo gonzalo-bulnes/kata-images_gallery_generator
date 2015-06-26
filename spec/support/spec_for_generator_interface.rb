@@ -21,5 +21,9 @@ RSpec.shared_examples 'a generator' do
     it 'accepts a file path and a directory path as arguments' do
       expect{ generator.run('spec/fixtures/works.xml', 'spec/tmp/') }.not_to raise_error
     end
+
+    it 'returns the path of the gallery index page' do
+      expect(generator.run('spec/fixtures/works.xml', 'spec/tmp/')).to eq 'spec/tmp/index.html'
+    end
   end
 end

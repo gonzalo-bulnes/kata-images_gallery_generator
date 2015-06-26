@@ -6,9 +6,9 @@ module ImagesGallery
   class CLI < Thor
 
     desc 'generate SOURCE TARGET', 'Generate a static HTML images gallery in the TARGET directory from the SOURCE file contents.'
-    def generate(source, target=nil, error=STDERR)
+    def generate(source, target=nil, error=STDERR, out=STDOUT)
       begin
-        generator.run(source, target)
+        out.puts generator.run(source, target)
       rescue ImagesGallery::SourceFileNotFoundError
         error.puts 'Please make sure the specified source file exists.'
       rescue ImagesGallery::TargetDirectoryNotFoundError
