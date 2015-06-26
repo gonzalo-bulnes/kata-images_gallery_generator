@@ -18,12 +18,12 @@ Gem::Specification.new do |gem|
   gem.test_files = Dir["spec/**/*"]
 
   gem.add_dependency 'libxml-ruby', '~> 2.0'
+  gem.add_dependency 'rainbow', '~> 2.0'
   gem.add_dependency 'thor', '~> 0.19.1'
 
   gem.add_development_dependency 'capybara', '~> 2.0'
   gem.add_development_dependency 'inch', '~> 0.6'
   gem.add_development_dependency 'rack', '~> 1.0'
-  gem.add_development_dependency 'rainbow', '~> 2.0'
   gem.add_development_dependency 'rake', '~> 10.0'
   gem.add_development_dependency 'rspec', '~> 3.0'
   gem.add_development_dependency 'rubycritic', '~> 1.0'
