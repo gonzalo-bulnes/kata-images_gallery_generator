@@ -43,6 +43,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    rack (1.6.4)
     rainbow (2.0.0)
     rake (10.4.2)
     reek (1.6.5)
@@ -99,6 +100,7 @@ PLATFORMS
 DEPENDENCIES
   inch (~> 0.6)
   libxml-ruby (~> 2.0)
+  rack (~> 1.0)
   rainbow (~> 2.0)
   rake (~> 10.0)
   rspec (~> 3.0)
