@@ -31,12 +31,12 @@ module ImagesGallery
     end
 
     def thumbnails(images)
-      template = 'lib/images_gallery/templates/_thumbnails.html.erb'
+      template = File.expand_path('../templates/_thumbnails.html.erb', __FILE__)
       ERB.new(File.new(template).read).result(binding)
     end
 
     def navigation(links)
-      template = 'lib/images_gallery/templates/_navigation.html.erb'
+      template = File.expand_path('../templates/_navigation.html.erb', __FILE__)
       ERB.new(File.new(template).read).result(binding)
     end
 

@@ -7,3 +7,6 @@ tmp/rubycritic
 # large fixtures
 spec/fixtures/*_large.xml
 
+# gems
+*.gem
+
