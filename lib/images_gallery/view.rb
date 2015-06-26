@@ -46,9 +46,9 @@ module ImagesGallery
 
     def file_identifier(make, model=nil)
       if model.nil?
-        "#{make.downcase.gsub(/\W/, '_').gsub(/_+/, '_').gsub(/_\Z/, '')}"
+        "#{make.to_filename}"
       else
-        "#{make.downcase.gsub(/\W/, '_').gsub(/_+/, '_').gsub(/_\Z/, '')}/#{model.downcase.gsub(/\W/, '_').gsub(/_+/, '_').gsub(/_\Z/, '')}"
+        "#{make.to_filename}/#{model.to_filename}"
       end
     end
   end

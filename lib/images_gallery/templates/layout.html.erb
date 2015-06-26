@@ -1,60 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= title %></title>
-  <style type="text/css">
-    html, body {
-      font-family: "adelle", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 1rem;
-    }
-    nav {
-      border: 1px solid #ccc;
-      border-width: 1px 0;
-      margin: 2rem 0;
-    }
-    .nav-link {
-      display: inline-block;
-      line-height: 3rem;
-      padding: 0 1rem;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-    .grid {
-      max-width: 960px;
-    }
-    .grid-item {
-      border: 1px solid #ccc;
-      display: inline-block;
-      padding: 10px 10px 5px;
-      position: relative;
-      margin: 5px;
-    }
-    .grid-item-details {
-      background-color: rgba(255, 255, 255, 0.9);
-      color: #333;
-      font-size: .8rem;
-      font-variant: small-caps;
-      height: 3rem;
-      left: 0;
-      line-height: 1.2rem;
-      opacity: 0;
-      padding: .2rem 0 10px;
-      position: absolute;
-      width: 100%;
-      bottom: 0;
-      text-align: center;
-      text-decoration: none;
-    }
-    .grid-item:hover .grid-item-details {
-      opacity: 1;
-    }
-  </style>
-  </head>
-<body>
-  <header>
-    <h1><%= title %></h1>
-    <%= navigation(links) %>
-  </header>
+  <head>
+    <title><%= title %></title>
+    <style type="text/css">
+      html, body {
+        font-family: "adelle", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 1rem;
+      }
+      nav {
+        border: 1px solid #ccc;
+        border-width: 1px 0;
+        margin: 2rem 0;
+      }
+      .nav-link {
+        display: inline-block;
+        line-height: 3rem;
+        padding: 0 1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+      .grid {
+        max-width: 960px;
+      }
+      .grid-item {
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 10px 10px 5px;
+        position: relative;
+        margin: 5px;
+      }
+      .grid-item-details {
+        background-color: rgba(255, 255, 255, 0.9);
+        color: #333;
+        font-size: .8rem;
+        font-variant: small-caps;
+        height: 3rem;
+        left: 0;
+        line-height: 1.2rem;
+        opacity: 0;
+        padding: .2rem 0 10px;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        text-align: center;
+        text-decoration: none;
+      }
+      .grid-item:hover .grid-item-details {
+        opacity: 1;
+      }
+    </style>
+    </head>
+  <body>
+    <header>
+      <h1><%= title %></h1>
+      <%= navigation(links) %>
+    </header>
 
-  <%= thumbnails(sample_images) %>
-</body>
+    <%= thumbnails(sample_images) %>
+  </body>
+</html>
