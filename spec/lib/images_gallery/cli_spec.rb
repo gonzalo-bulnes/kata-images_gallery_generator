@@ -32,7 +32,7 @@ describe 'CLI' do
           stderr = double()
           allow(command_line_interface).to receive_message_chain(:generator, :run) { raise ImagesGallery::SourceFileNotFoundError }
 
-          expect(stderr).to receive_message_chain(:puts).with('Please make sure the specified source file exists.')
+          expect(stderr).to receive_message_chain(:puts).with('ERROR: Please make sure the specified source file exists.')
           command_line_interface.generate('source', 'target', stderr)
         end
       end
@@ -43,7 +43,7 @@ describe 'CLI' do
           stderr = double()
           allow(command_line_interface).to receive_message_chain(:generator, :run) { raise ImagesGallery::TargetDirectoryNotFoundError }
 
-          expect(stderr).to receive_message_chain(:puts).with('Please make sure the specified target directory exists.')
+          expect(stderr).to receive_message_chain(:puts).with('ERROR: Please make sure the specified target directory exists.')
           command_line_interface.generate('source', 'target', stderr)
         end
       end
@@ -54,7 +54,7 @@ describe 'CLI' do
           stderr = double()
           allow(command_line_interface).to receive_message_chain(:generator, :run) { raise ImagesGallery::SourceFileInvalidError }
 
-          expect(stderr).to receive_message_chain(:puts).with('The source file is invalid. Please check it is well-formed XML.')
+          expect(stderr).to receive_message_chain(:puts).with('ERROR: The source file is invalid. Please check it is well-formed XML.')
           command_line_interface.generate('source', 'target', stderr)
         end
       end
