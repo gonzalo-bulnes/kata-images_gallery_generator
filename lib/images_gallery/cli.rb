@@ -10,11 +10,11 @@ module ImagesGallery
       begin
         out.puts generator.run(source, target)
       rescue ImagesGallery::SourceFileNotFoundError
-        error.puts 'Please make sure the specified source file exists.'
+        error.puts 'ERROR: Please make sure the specified source file exists.'
       rescue ImagesGallery::TargetDirectoryNotFoundError
-        error.puts 'Please make sure the specified target directory exists.'
+        error.puts 'ERROR: Please make sure the specified target directory exists.'
       rescue ImagesGallery::SourceFileInvalidError
-        error.puts 'The source file is invalid. Please check it is well-formed XML.'
+        error.puts 'ERROR: The source file is invalid. Please check it is well-formed XML.'
       end
     end
 
