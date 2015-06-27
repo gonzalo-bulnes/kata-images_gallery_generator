@@ -1,6 +1,7 @@
 require 'libxml'
 
 require 'images_gallery/collection'
+require 'images_gallery/models/image'
 
 module ImagesGallery
   class Source
@@ -47,7 +48,7 @@ module ImagesGallery
       @current_element = element
 
       if element == 'work'
-        @current_image = Image.new
+        @current_image = Models::Image.new
       end
 
       if element == 'url' && attributes['type'] == 'small'

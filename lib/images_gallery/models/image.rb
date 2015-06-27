@@ -1,4 +1,5 @@
 module ImagesGallery
+  module Models
   class Image
 
     attr_accessor :id, :src, :make, :model
@@ -15,5 +16,6 @@ module ImagesGallery
       "Image #{@id}"
     end
 
+  end
   end
 end

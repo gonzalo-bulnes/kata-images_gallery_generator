@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 module ImagesGallery
-describe 'Image' do
+describe 'Models::Image' do
 
-  let(:image) { Image.new }
+  let(:image) { Models::Image.new }
 
   it_behaves_like 'an image'
 

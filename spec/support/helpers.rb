@@ -14,7 +14,7 @@ end
 
 module ViewHelpers
   def images_collection
-    ImagesGallery::Collection.new << ImagesGallery::Image.new
+    ImagesGallery::Collection.new << ImagesGallery::Models::Image.new
   end
 end
 

@@ -1,4 +1,4 @@
-require 'images_gallery/image'
+require 'images_gallery/models/image'
 
 module ImagesGallery
   class Collection < Array
