@@ -1,21 +1,21 @@
 module ImagesGallery
   module Models
-  class Image
+    class Image
 
-    attr_accessor :id, :src, :make, :model
+      attr_accessor :id, :src, :make, :model
 
-    def make
-      @make || 'Unknown Make'
+      def make
+        @make || 'Unknown Make'
+      end
+
+      def model
+        @model || 'Unknown Model'
+      end
+
+      def description
+        "Image #{@id}"
+      end
+
     end
-
-    def model
-      @model || 'Unknown Model'
-    end
-
-    def description
-      "Image #{@id}"
-    end
-
-  end
   end
 end
