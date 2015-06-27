@@ -1,7 +1,8 @@
 require 'erb'
 
 module ImagesGallery
-  class View
+  module Views
+  class Base
 
     # Provides context and helpers to the corresponding template
     #
@@ -31,12 +32,12 @@ module ImagesGallery
     end
 
     def thumbnails(images)
-      template = File.expand_path('../templates/_thumbnails.html.erb', __FILE__)
+      template = File.expand_path('../../templates/_thumbnails.html.erb', __FILE__)
       ERB.new(File.new(template).read).result(binding)
     end
 
     def navigation(links)
-      template = File.expand_path('../templates/_navigation.html.erb', __FILE__)
+      template = File.expand_path('../../templates/_navigation.html.erb', __FILE__)
       ERB.new(File.new(template).read).result(binding)
     end
 
@@ -52,4 +53,5 @@ module ImagesGallery
       end
     end
   end
+ end
 end

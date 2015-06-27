@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 module ImagesGallery
-describe 'View' do
+describe 'Views::Base' do
 
-  let(:view) { View.new }
+  let(:view) { Views::Base.new }
 
   it 'does not define :template' do
     expect { view.template }.to raise_error NotImplementedError

@@ -1,10 +1,10 @@
 require 'erb'
 
-require 'images_gallery/view'
+require 'images_gallery/views/base'
 
 module ImagesGallery
   module Views
-    class Make < ImagesGallery::View
+    class Make < Base
 
       attr_reader :depth, :links, :make, :sample_images, :title
       private :depth, :links, :make, :sample_images, :title
