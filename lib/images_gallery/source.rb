@@ -1,6 +1,6 @@
 require 'libxml'
 
-require 'images_gallery/collection'
+require 'images_gallery/models/collection'
 require 'images_gallery/models/image'
 
 module ImagesGallery
@@ -34,7 +34,7 @@ module ImagesGallery
     end
 
     def parse
-      @images = Collection.new
+      @images = Models::Collection.new
       begin
         @file.parse
       rescue LibXML::XML::Error

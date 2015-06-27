@@ -1,3 +1,4 @@
+require 'images_gallery/models/collection'
 require 'images_gallery/errors'
 require 'images_gallery/source'
 require 'images_gallery/views/index'
@@ -31,14 +32,14 @@ module ImagesGallery
         files['index'] = Views::Index.new(images).render
 
         images.makes.each do |make|
-          images_by_make = Collection.new
+          images_by_make = Models::Collection.new
           images.select{ |image| image.make == make }.each do |image|
             images_by_make << image
             view = Views::Make.new(images_by_make)
             files[view.file_identifier(image.make)] = view.render
 
             images_by_make.models.each do |model|
-              images_by_model = Collection.new
+              images_by_model = Models::Collection.new
               images_by_make.select{ |image| image.model == model }.each do |image|
                 images_by_model << image
                 view = Views::Model.new(images_by_model)
