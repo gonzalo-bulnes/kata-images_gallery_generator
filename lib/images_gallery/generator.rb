@@ -1,6 +1,6 @@
-require 'images_gallery/models/collection'
 require 'images_gallery/errors'
-require 'images_gallery/source'
+require 'images_gallery/models/collection'
+require 'images_gallery/models/source'
 require 'images_gallery/views/index'
 require 'images_gallery/views/make'
 require 'images_gallery/views/model'
@@ -16,7 +16,7 @@ module ImagesGallery
       raise SourceFileNotFoundError unless File.file? source
       raise TargetDirectoryNotFoundError unless File.directory? target
 
-      @source = Source.new(source)
+      @source = Models::Source.new(source)
       @target = target
 
       @source.parse

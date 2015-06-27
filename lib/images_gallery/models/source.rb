@@ -4,6 +4,7 @@ require 'images_gallery/models/collection'
 require 'images_gallery/models/image'
 
 module ImagesGallery
+  module Models
   class Source
 
     include LibXML
@@ -101,5 +102,6 @@ module ImagesGallery
     def on_end_document
       @current_element = nil
     end
+  end
   end
 end
