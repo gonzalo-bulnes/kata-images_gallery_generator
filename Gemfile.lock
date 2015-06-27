@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    images_gallery (1.0.0)
+    images_gallery (1.0.1)
       libxml-ruby (~> 2.0)
       rainbow (~> 2.0)
       thor (~> 0.19.1)
