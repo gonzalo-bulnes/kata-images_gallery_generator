@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 module ImagesGallery
-describe 'Source' do
+describe 'Models::Source' do
 
-  let(:source) { Source.new('spec/fixtures/works.xml') }
+  let(:source) { Models::Source.new('spec/fixtures/works.xml') }
   let(:parser) { source }
 
   it_behaves_like 'a parser'

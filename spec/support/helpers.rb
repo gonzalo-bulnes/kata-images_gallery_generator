@@ -12,7 +12,14 @@ module Selectors
   end
 end
 
+module ViewHelpers
+  def images_collection
+    ImagesGallery::Models::Collection.new << ImagesGallery::Models::Image.new
+  end
+end
+
 RSpec.configure do |config|
   config.extend Selectors
   config.include Selectors
+  config.include ViewHelpers
 end

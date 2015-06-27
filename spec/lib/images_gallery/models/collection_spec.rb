@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 module ImagesGallery
-describe 'Collection' do
+describe 'Models::Collection' do
 
-  let(:collection) { Collection.new }
+  let(:collection) { Models::Collection.new }
 
   it_behaves_like 'a collection'
 
