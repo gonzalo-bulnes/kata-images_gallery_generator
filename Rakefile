@@ -1,3 +1,4 @@
+require 'html/proofer'
 require 'rainbow'
 require 'rspec/core/rake_task'
 
@@ -21,4 +22,12 @@ rescue LoadError
   end
 end
 
-task default: [:spec, :inch]
+namespace :validate do
+  desc 'Verify HTML files are valid.'
+  task :html do
+    system 'images_gallery generate spec/fixtures/works.xml spec/tmp > /dev/null'
+    HTML::Proofer.new('spec/tmp', disable_external: true, check_html: true).run
+  end
+end
+
+task default: [:spec, 'validate:html', :inch]

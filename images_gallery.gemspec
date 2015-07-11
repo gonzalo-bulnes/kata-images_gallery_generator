@@ -23,6 +23,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'thor', '~> 0.19.1'
 
   gem.add_development_dependency 'capybara', '~> 2.0'
+  gem.add_development_dependency 'html-proofer', '~> 2.0'
   gem.add_development_dependency 'inch', '~> 0.6'
   gem.add_development_dependency 'rack', '~> 1.0'
   gem.add_development_dependency 'rake', '~> 10.0'
