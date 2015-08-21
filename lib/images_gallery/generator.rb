@@ -4,6 +4,7 @@ require 'images_gallery/models/source'
 require 'images_gallery/views/index'
 require 'images_gallery/views/make'
 require 'images_gallery/views/model'
+require 'images_gallery/views/iso'
 
 module ImagesGallery
   class Generator

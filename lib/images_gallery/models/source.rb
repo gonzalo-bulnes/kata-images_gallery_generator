@@ -66,6 +66,10 @@ module ImagesGallery
           @current_image.id = @current_id
         end
 
+        if element == 'iso_speed_ratings'
+          @current_image.iso = @current_iso
+        end
+
         if element == 'make'
           @current_image.make = @current_make
         end
@@ -84,6 +88,10 @@ module ImagesGallery
       def on_characters(char)
         if @current_element == 'id'
           @current_id = char
+        end
+
+        if @current_element == 'iso_speed_ratings'
+          @current_iso = char
         end
 
         if @current_element == 'make'
