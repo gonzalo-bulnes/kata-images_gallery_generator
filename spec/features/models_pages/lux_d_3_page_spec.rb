@@ -15,11 +15,11 @@ describe 'The LUX-D 3 model page', type: :feature do
   describe 'navigation' do
 
     it 'contains a link to the ISO 200 page' do
-      expect(page).to have_selector "#{navigation_selector} a[href='leica/d_lux_3/200.html']"
+      expect(page).to have_selector "#{navigation_selector} a[href='../leica/d_lux_3/200.html']"
     end
 
     it 'contains a link to the ISO 100 page' do
-      expect(page).to have_selector "#{navigation_selector} a[href='leica/d_lux_3/100.html']"
+      expect(page).to have_selector "#{navigation_selector} a[href='../leica/d_lux_3/100.html']"
     end
   end
 end

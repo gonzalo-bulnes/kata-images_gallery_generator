@@ -15,7 +15,7 @@ describe 'The Canon EOS 20D model page', type: :feature do
   describe 'navigation' do
 
     it 'contains a link to the ISO 100 page' do
-      expect(page).to have_selector "#{navigation_selector} a[href='canon/canon_eos_20d/100.html']"
+      expect(page).to have_selector "#{navigation_selector} a[href='../canon/canon_eos_20d/100.html']"
     end
   end
 end
