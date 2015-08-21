@@ -42,7 +42,7 @@ module ImagesGallery
       end
 
       def link_to(depth, make, model=nil, iso_value=nil)
-        ('../' * depth) + file_identifier(make, model) + '.html'
+        ('../' * depth) + file_identifier(make, model, iso_value) + '.html'
       end
 
       def file_identifier(make, model=nil, iso_value=nil)
