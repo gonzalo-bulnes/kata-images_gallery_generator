@@ -56,12 +56,17 @@ module ImagesGallery
           dir_path = "#{target}/#{name}".gsub('//', '/')
           file_path = dir_path + '.html'
           @index_path = file_path if name == 'index'
-          FileUtils.mkdir_p(dir_path) unless File.exists?(dir_path) || (name == 'index')
+          FileUtils.mkdir_p(parent(dir_path)) unless File.exists?(dir_path) || (name == 'index')
           File.open(file_path, 'w') do |file|
             file.write content
           end
         end
         @index_path
+      end
+
+      def parent(dir_path)
+        return dir_path.match('(.*)\/.*$').captures.first unless dir_path.match('(.*)\/.*$').nil?
+        '.'
       end
   end
 end
