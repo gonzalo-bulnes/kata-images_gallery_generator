@@ -38,5 +38,12 @@ RSpec.shared_examples 'a view' do
         expect(view.link_to(depth, 'make', 'model')).to eq '../make/model.html'
       end
     end
+
+    context 'when provided a depth, a make, a model, and an ISO value' do
+
+      it 'generates an ISO page' do
+        expect(view.link_to(depth, 'make', 'model', 'iso_value')).to eq '../make/model/iso_value.html'
+      end
+    end
   end
 end
