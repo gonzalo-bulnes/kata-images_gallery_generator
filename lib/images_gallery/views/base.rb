@@ -41,15 +41,17 @@ module ImagesGallery
         ERB.new(File.new(template).read).result(binding)
       end
 
-      def link_to(depth, make, model=nil)
-        ('../' * depth) + file_identifier(make, model) + '.html'
+      def link_to(depth, make, model=nil, iso_value=nil)
+        ('../' * depth) + file_identifier(make, model, iso_value) + '.html'
       end
 
-      def file_identifier(make, model=nil)
+      def file_identifier(make, model=nil, iso_value=nil)
         if model.nil?
           "#{make.to_filename}"
-        else
+        elsif iso_value.nil?
           "#{make.to_filename}/#{model.to_filename}"
+        else
+          "#{make.to_filename}/#{model.to_filename}/#{iso_value.to_filename}"
         end
       end
     end

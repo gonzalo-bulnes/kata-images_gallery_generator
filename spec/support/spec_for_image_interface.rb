@@ -15,4 +15,8 @@ RSpec.shared_examples 'an image' do
   it 'responds to :src' do
     expect(image).to respond_to :src
   end
+
+  it 'responds to :iso' do
+    expect(image).to respond_to :iso
+  end
 end

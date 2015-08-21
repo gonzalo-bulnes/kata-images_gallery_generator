@@ -59,7 +59,7 @@ The `ImageGallery::Source` relies on the **LibXML** SAX parser to extract the im
 About
 -----
 
-This kata aims at writing a command-line tool to process **large** XML files which contain images metadata. Part of that metadata is relevant, and the images gallery should allow to preview a collection of thumbnails classified by camera **make** and **model**.
+This kata aims at writing a command-line tool to process **large** XML files which contain images metadata. Part of that metadata is relevant, and the images gallery should allow to preview a collection of thumbnails classified by camera **make**, **model** and **ISO speed ratings**.
 
 Because the images collections can be really large, [care has been taken][parser] to avoid loading the XML document in memory while parsing it.
 
@@ -67,7 +67,7 @@ Because the images collections can be really large, [care has been taken][parser
 
 Yet huges collections to review do also mean you probably don't want to review them without involving your team. That's to say the images gallery deployment is a key aspect of the task at hand, and keeping the files tree as simple as possible is a way to make the deployments as straightforward as possible. No external CSS, nor font, nor javascipts then.
 
-The views/templates pattern makes the design extensible, this galleries generator is no <abbr title="Content Management System">CMS</abbr> however! Priority has been given to simplify as much as possible the rendering engine task. Plain ERb should keep the HTML generation fast, while a basic partials system ensures that adding front-end features remains [a _pomodoro_-sized task][pomodoro].
+The views/templates pattern makes the design extensible, this galleries generator is no <abbr title="Content Management System">CMS</abbr> however! Priority has been given to simplify as much as possible the rendering engine task. Plain ERb should keep the HTML generation fast, while a basic partials system ensures that adding a few front-end features remains [a _pomodoro_-sized task][pomodoro]. (If more features would to be added, however, the views mechanics and the templates management should be refined - see the naviagtion links generation for example.)
 
   [pomodoro]: https://github.com/gonzalo-bulnes/kata-images_gallery_generator/commit/a90590e63f65d0b166c93e709a17a267c9ec119f
 

@@ -25,12 +25,17 @@ describe 'Models::Source' do
           source.parse
           source.images.each do |image|
 
-            # There is some duplication here that I couldn't remove.
+            # There is some duplication here that I couldn't remove because
+            # the shared specs do not allow to inject the object under test.
+            #
+            # I did copy the examples from the image interface spec.
             # See spec/support/spec_for_image_interface.
-
+            #
+            # The following examples mean in fact:
             #it_behaves_like 'an image'
 
             expect(image).to respond_to :description
+            expect(image).to respond_to :iso
             expect(image).to respond_to :make
             expect(image).to respond_to :model
             expect(image).to respond_to :src

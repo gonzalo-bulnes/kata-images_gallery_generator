@@ -7,6 +7,7 @@ describe 'Models::Collection' do
 
   it_behaves_like 'a collection'
 
+  it { expect(collection).to respond_to :iso_values }
   it { expect(collection).to respond_to :makes }
   it { expect(collection).to respond_to :models }
 

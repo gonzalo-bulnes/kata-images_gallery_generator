@@ -4,6 +4,7 @@ require 'images_gallery/models/source'
 require 'images_gallery/views/index'
 require 'images_gallery/views/make'
 require 'images_gallery/views/model'
+require 'images_gallery/views/iso'
 
 module ImagesGallery
   class Generator
@@ -44,6 +45,15 @@ module ImagesGallery
                 images_by_model << image
                 view = Views::Model.new(images_by_model)
                 files[view.file_identifier(image.make, image.model)] = view.render
+
+                images_by_model.iso_values.each do |iso_value|
+                  images_by_iso_value = Models::Collection.new
+                  images_by_model.select{ |image| image.iso == iso_value }.each do |image|
+                    images_by_iso_value << image
+                    view = Views::ISO.new(images_by_iso_value)
+                    files[view.file_identifier(image.make, image.model, image.iso)] = view.render
+                  end
+                end
               end
             end
           end
@@ -56,12 +66,17 @@ module ImagesGallery
           dir_path = "#{target}/#{name}".gsub('//', '/')
           file_path = dir_path + '.html'
           @index_path = file_path if name == 'index'
-          FileUtils.mkdir_p(dir_path) unless File.exists?(dir_path) || (name == 'index')
+          FileUtils.mkdir_p(parent(dir_path)) unless File.exists?(dir_path) || (name == 'index')
           File.open(file_path, 'w') do |file|
             file.write content
           end
         end
         @index_path
+      end
+
+      def parent(dir_path)
+        return dir_path.match('(.*)\/.*$').captures.first unless dir_path.match('(.*)\/.*$').nil?
+        '.'
       end
   end
 end

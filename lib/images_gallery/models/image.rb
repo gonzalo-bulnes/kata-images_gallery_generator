@@ -2,7 +2,15 @@ module ImagesGallery
   module Models
     class Image
 
-      attr_accessor :id, :src, :make, :model
+      attr_accessor :id, :iso, :make, :model, :src
+
+      def description
+        "Image #{@id}"
+      end
+
+      def iso
+        @iso || 'speed ratings unknown'
+      end
 
       def make
         @make || 'Unknown Make'
@@ -10,10 +18,6 @@ module ImagesGallery
 
       def model
         @model || 'Unknown Model'
-      end
-
-      def description
-        "Image #{@id}"
       end
 
     end

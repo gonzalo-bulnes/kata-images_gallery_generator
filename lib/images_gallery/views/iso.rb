@@ -4,22 +4,22 @@ require 'images_gallery/views/base'
 
 module ImagesGallery
   module Views
-    class Model < Base
+    class ISO < Base
 
-      attr_reader :depth, :links, :make, :model, :sample_images, :title
-      private :depth, :links, :make, :model, :sample_images, :title
+      attr_reader :depth, :links, :iso, :make, :model, :sample_images, :title
+      private :depth, :links, :iso, :make, :model, :sample_images, :title
 
       def initialize(images)
         super()
 
-        @depth = 1
+        @depth = 2
         @make = images.first.make
         @model = images.first.model
+        @iso = images.first.iso
         @links = [{ name: "Browse all the images", href: link_to(depth, 'index') }]
-        @links << { name: "Browse all the #{make} images", href: link_to(depth, make) }
-        @links += images.iso_values.map{ |iso_value| { name: "ISO #{iso_value}", href: link_to(depth, make, model, iso_value) } }
+        @links << { name: "Browse all the #{model} images", href: link_to(depth, make, model) }
         @sample_images = images
-        @title = "Images by (#{make}) #{model}"
+        @title = "Images by (#{make}) #{model} @ ISO #{iso}"
       end
 
       def template
