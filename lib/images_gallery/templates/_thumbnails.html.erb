@@ -2,10 +2,11 @@
   <% images.each do |image| %>
     <div class="grid-item">
       <img alt="<%= image.description %>" src="<%= image.src %>"/>
-      <% unless depth == 1 %>
-        <a class="grid-item-details" href="<%= link_to(depth, image.make, image.model) %>" title="Browse all the <%= image.model %> images.">
+      <% unless depth > 1 %>
+        <a class="grid-item-details" href="<%= link_to(depth, image.make, image.model, image.iso) %>" title="Browse all the <%= image.model %> @ ISO <%= image.iso %> images.">
           <div><%= image.make %></div>
           <div><%= image.model %></div>
+          <div><small>ISO <%= image.iso %></small></div>
         </a>
       <% end %>
     </div>
