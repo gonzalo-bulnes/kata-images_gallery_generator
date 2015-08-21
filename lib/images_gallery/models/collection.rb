@@ -12,6 +12,10 @@ module ImagesGallery
         map { |image| image.model }.uniq.sort
       end
 
+      def iso_values
+        map { |image| image.iso }.uniq.sort
+      end
+
     end
   end
 end

@@ -17,6 +17,7 @@ module ImagesGallery
         @model = images.first.model
         @links = [{ name: "Browse all the images", href: link_to(depth, 'index') }]
         @links << { name: "Browse all the #{make} images", href: link_to(depth, make) }
+        @links += images.iso_values.map{ |iso_value| { name: "ISO #{iso_value}", href: link_to(depth, make, model, iso_value) } }
         @sample_images = images
         @title = "Images by (#{make}) #{model}"
       end
