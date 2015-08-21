@@ -9,7 +9,7 @@ module ImagesGallery
       end
 
       def iso
-        @iso || 'Unknown ISO speed rating'
+        @iso || 'speed ratings unknown'
       end
 
       def make
