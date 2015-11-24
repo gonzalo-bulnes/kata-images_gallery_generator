@@ -9,5 +9,7 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 RUN bundle install
 
+VOLUME /data
+
 ENTRYPOINT ["./bin/images_gallery"]
 
