@@ -1,0 +1,4 @@
+FROM nginx
+VOLUME /data
+RUN cp -R /data/. /usr/share/nginx/html
+

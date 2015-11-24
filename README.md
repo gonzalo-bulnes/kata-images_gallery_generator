@@ -23,6 +23,8 @@ gem 'images_gallery', '~> 1.0' # see semver.org
 Usage
 -----
 
+### Local
+
 ```bash
 # Generate a gallery inside spec/tmp from the example source file
 images_gallery generate spec/fixtures/works.xml spec/tmp
@@ -32,6 +34,29 @@ images_gallery help
 
 # Open the images gallery automatically after it was generated
 firefox $(images_gallery generate spec/fixtures/works.xml spec/tmp/)
+```
+
+### Using Docker
+
+If you don't want to deal with Ruby tools, Docker can automate part of the process.
+
+
+```bash
+# Generate the images gallery (supposing your source file is spec/fixtures/works.xml):
+docker run --name images_gallery gonzalobulnes/images_gallery:1.1.0 generate spec/fixtures/works.xml /data
+# Move the images gallery where the server can find it:
+docker run --name images_gallery_glue --volumes-from images_gallery gonzalobulnes/images_gallery_glue:1.0.0
+# Start the server:
+docker run --name images_gallery_server --volumes-from images_gallery_glue -d -P gonzalobulnes/images_gallery_server:1.0.0
+
+# To browse the images, visit the local URL corresponding to the container port 80:
+docker ps
+# Example:
+#
+#     if you see 0.0.0.0:32778->80/tcp, visit 0.0.0.0:32778
+
+# Alternatively, open the images gallery automatically:
+firefox $(docker ps | grep images_gallery_server | perl -lne 'print $1 if /(\d\.\d\.\d\.\d:\d+)->80\/tcp/')
 ```
 
 Development
@@ -55,6 +80,19 @@ The `ImageGallery::Source` relies on the **LibXML** SAX parser to extract the im
   [example-source]: spec/fixtures/works.xml
   [libxml-benchmarks]: https://github.com/xml4r/libxml-ruby#performance
   [sax-versus-dom]: http://www.saxproject.org/event.html
+
+### Docker images
+
+All three images can be pulled from the [Docker Hub](https://hub.docker.com/r/gonzalobulnes/images_gallery/).
+
+```bash
+# Three images are used to generate the gallery and start a web server.
+#
+# Build all three images:
+docker build -t gonzalobulnes/images_gallery:1.1.0 .
+docker build -t gonzalobulnes/images_gallery_glue:1.0.0 -f Dockerfile.glue .
+docker build -t gonzalobulnes/images_gallery_server:1.0.0 -f Dockerfile.server .
+```
 
 About
 -----
