@@ -42,13 +42,6 @@ If you don't want to deal with Ruby tools, Docker can automate part of the proce
 
 
 ```bash
-# Three images are used to generate the gallery and start a web server.
-#
-# Build all three images (needs to be done only once):
-docker build -t gonzalobulnes/images_gallery:1.1.0 .
-docker build -t gonzalobulnes/images_gallery_glue:1.0.0 -f Dockerfile.glue .
-docker build -t gonzalobulnes/images_gallery_server:1.0.0 -f Dockerfile.server .
-
 # Generate the images gallery (supposing your source file is spec/fixtures/works.xml):
 docker run --name images_gallery gonzalobulnes/images_gallery:1.1.0 generate spec/fixtures/works.xml /data
 # Move the images gallery where the server can find it:
@@ -87,6 +80,19 @@ The `ImageGallery::Source` relies on the **LibXML** SAX parser to extract the im
   [example-source]: spec/fixtures/works.xml
   [libxml-benchmarks]: https://github.com/xml4r/libxml-ruby#performance
   [sax-versus-dom]: http://www.saxproject.org/event.html
+
+### Docker images
+
+All three images can be pulled from the [Docker Hub](https://hub.docker.com/r/gonzalobulnes/images_gallery/).
+
+```bash
+# Three images are used to generate the gallery and start a web server.
+#
+# Build all three images:
+docker build -t gonzalobulnes/images_gallery:1.1.0 .
+docker build -t gonzalobulnes/images_gallery_glue:1.0.0 -f Dockerfile.glue .
+docker build -t gonzalobulnes/images_gallery_server:1.0.0 -f Dockerfile.server .
+```
 
 About
 -----
